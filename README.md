@@ -250,7 +250,7 @@ Summary: 4 passed, 0 rate-limited, 0 failed, 0 errors, 0 skipped
 
 ## 📬 تماس
 
-برای سوالات یا پیشنهادات، لطفاً یک Issue در گیت‌هاب باز کنید یا با ایمیل your-email@example.com تماس بگیرید.
+برای سوالات یا پیشنهادات، لطفاً یک Issue در گیت‌هاب باز کنید  
 
 ---
 
