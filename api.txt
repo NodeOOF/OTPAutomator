@@ -1,0 +1,101 @@
+[alibaba-otp]
+name = Alibaba.ir OTP
+url = https://ws.alibaba.ir/api/v3/account/mobile/otp
+method = POST
+body = {"phoneNumber": "{{phone}}"}
+headers = {
+  "Accept": "application/json, text/plain, */*",
+  "Accept-Language": "en-US,en;q=0.9",
+  "Content-Type": "application/json",
+  "Origin": "https://www.alibaba.ir",
+  "Referer": "https://www.alibaba.ir/",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+  "ab-alohomora": "o5t755XodEiGGHSv2dLv9g",
+  "ab-channel": "WEB-NEW,PRODUCTION,CSR,www.alibaba.ir,desktop,Chrome,149.0.0.0,N,N,Windows,10,3.264.2",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-site",
+  "tracing-device": "N,Chrome,149.0.0.0,N,N,Windows",
+  "tracing-sessionid": "1782745232035"
+}
+warmup = https://www.alibaba.ir/
+expected_fields = result.tempToken, result.message
+
+[Kalahamrah-otp]
+name = Kalahamrah.com OTP
+url = https://kalahamrah.com/wp-admin/admin-ajax.php
+method = POST
+body = action=login_register_together&value={{phone}}&captcha=&nonce={{nonce_login_register}}
+headers = {
+  "Accept": "*/*",
+  "Accept-Encoding": "gzip, deflate, br, zstd",
+  "Accept-Language": "en-US,en;q=0.9",
+  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+  "Origin": "https://kalahamrah.com",
+  "Referer": "https://kalahamrah.com/panel/",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+  "X-Requested-With": "XMLHttpRequest",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-origin"
+}
+warmup = https://kalahamrah.com/panel/
+extract_nonce = nonce_login_register
+expected_fields = status, msg
+
+[snappfood-otp]
+name = Snappfood OTP
+url = https://user.snappfood.ir/v1/auth/otp/send
+method = POST
+body = {"mobile_number": "{{phone}}", "type": "Customer"}
+headers = {
+  "Accept": "application/json, text/plain, */*",
+  "Accept-Encoding": "gzip, deflate, br, zstd",
+  "Accept-Language": "fa",
+  "Content-Type": "application/json",
+  "Origin": "https://snappfood.ir",
+  "Referer": "https://snappfood.ir/",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-site"
+}
+warmup = https://snappfood.ir/
+expected_fields = success
+
+
+[snapptaxi-otp]
+name = Snapp Taxi OTP
+url = https://app.snapp.taxi/api/api-passenger-oauth/v3/mutotp
+method = POST
+body = {"cellphone": "+98{{phone}}", "attestation": {"method": "skip", "platform": "skip"}, "extra_methods": []}
+headers = {
+  "Accept": "*/*",
+  "Accept-Encoding": "gzip, deflate, br, zstd",
+  "Accept-Language": "en-US,en;q=0.9",
+  "Content-Type": "application/json",
+  "Origin": "https://app.snapp.taxi",
+  "Referer": "https://app.snapp.taxi/login",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+  "app-version": "pwa",
+  "locale": "fa-IR",
+  "sec-ch-ua": "\"Google Chrome\";v=\"149\", \"Chromium\";v=\"149\", \"Not)A;Brand\";v=\"24\"",
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": "\"Windows\"",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-origin",
+  "x-app-name": "passenger-pwa",
+  "x-app-version": "v18.39.2"
+}
+warmup = https://app.snapp.taxi/login
+expected_fields = success, data.token
