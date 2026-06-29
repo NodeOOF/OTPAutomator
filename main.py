@@ -66,7 +66,12 @@ class APITester:
 
     def interpolate(self, template):
         result = template
+        # شماره با صفر اول (برای اکثر سرویس‌ها)
         result = result.replace('{{phone}}', self.phone)
+        # شماره بدون صفر اول (برای سرویس‌هایی مثل اسنپ‌تاکسی)
+        phone_clean = self.phone.lstrip('0')
+        result = result.replace('{{phone_clean}}', phone_clean)
+        # جایگزینی متغیرهای استخراج شده از shared_data
         for key, val in self.shared_data.items():
             result = result.replace('{{' + key + '}}', str(val))
         return result
